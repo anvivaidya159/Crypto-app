@@ -33,8 +33,8 @@ const App = () => {
     setShowSpinner(true);
     getCoinDetails(row.id).then((coinData) => {
       setCoinData(coinData);
-      setShowSpinner(false);
       setOpenDailog(true);
+      setShowSpinner(false);
     });
   };
   console.log("coinData", coinData);
@@ -49,7 +49,7 @@ const App = () => {
         <CoinInfoDailog
           showInfo={openDialog}
           coinInfo={coinData}
-          closeDailog={setOpenDailog(false)}
+          closeDailog={() => setOpenDailog(false)}
         />
       ) : null}
       {coins.length !== 0 ? (
