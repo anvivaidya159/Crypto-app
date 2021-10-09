@@ -34,7 +34,7 @@ const App = () => {
     getCoinDetails(row.id).then((coinData) => {
       setCoinData(coinData);
       setOpenDailog(true);
-      setShowSpinner(false);
+      setShowSpinner(false);  
     });
   };
   console.log("coinData", coinData);

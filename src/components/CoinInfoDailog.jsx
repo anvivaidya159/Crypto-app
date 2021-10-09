@@ -70,12 +70,29 @@ export default function CoinInfoDailog(props) {
         open={props.showInfo}
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-          {props.coinInfo.name}
+          <strong>{props.coinInfo.name}</strong>
+          <img src={props.coinInfo.image.thumb} alt='does not show' align={'right'}></img>
         </BootstrapDialogTitle>
         <DialogContent dividers>
-          <Typography gutterBottom>
+          {/* <Typography gutterBottom>
            {props.coinInfo.description.en}
+          </Typography> */}
+          <Typography gutterBottom>
+            <div>Symbol : {props.coinInfo.symbol}</div>
+            <div>Market Data : {props.coinInfo.market_data}</div>
+            <div>Market Cap : {props.coinInfo.market_cap}</div>
+            <div>Market Cap Rank : {props.coinInfo.market_cap_rank} </div>
+            <div>Total Volume : {props.coinInfo.total_volume} </div>
           </Typography>
+          <Typography gutterBottom>
+          <div> Homepage : 
+           <a href={props.coinInfo.links.homepage[0]} >{props.coinInfo.links.homepage[0]} </a>
+           </div>
+           <div> Blockchain Site : 
+           <a href={props.coinInfo.links.blockchain_site[0]} >{props.coinInfo.links.blockchain_site[0]} </a>
+           </div>
+          </Typography>
+
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose}>

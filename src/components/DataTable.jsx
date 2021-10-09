@@ -86,7 +86,7 @@ DataTable.propTypes = {
 export default function DataTable(props) {
   const [page, setPage] = React.useState(0);
   const [rowSelected, setRowSelected] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(30);
+  const [rowsPerPage, setRowsPerPage] = React.useState(50);
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
