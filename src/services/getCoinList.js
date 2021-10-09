@@ -11,7 +11,8 @@ const coinListUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=
           image: coin.image,
           current_price: coin.current_price,
           market_cap: coin.market_cap,
-          market_cap_rank: coin.market_cap_rank
+          market_cap_rank: coin.market_cap_rank,
+          selected: false
         }));
       });
   };

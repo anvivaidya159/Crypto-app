@@ -1,11 +1,21 @@
-import * as React from 'react';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import * as React from "react";
+import CircularProgress from "@mui/material/CircularProgress";
+import Backdrop from '@mui/material/Backdrop';
+import PropTypes from 'prop-types';
 
-export default function CircularIndeterminate() {
+Spinner.propTypes = {
+   open: PropTypes.bool.isRequired,
+};
+
+export default function Spinner(props) {
+    console.log('open', props.open);
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CircularProgress color={'primary'}/>
-    </Box>
+    <Backdrop
+      sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      open={props.open}
+    //   onClick={handleClose}
+    >
+      <CircularProgress color="inherit" />
+    </Backdrop>
   );
 }

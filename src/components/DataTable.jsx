@@ -79,12 +79,13 @@ TablePaginationActions.propTypes = {
 };
 
 DataTable.propTypes = {
-    rows: PropTypes.array.isRequired
+    rows: PropTypes.array.isRequired,
+    onRowClick: PropTypes.func.isRequired
 }
-
 
 export default function DataTable(props) {
   const [page, setPage] = React.useState(0);
+  const [rowSelected, setRowSelected] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(30);
 
   // Avoid a layout jump when reaching the last page with empty rows.
@@ -100,6 +101,10 @@ export default function DataTable(props) {
     setPage(0);
   };
 
+  const getCoinInfo = (event, row) => {
+    props.onRowClick(row);
+  }
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
@@ -113,13 +118,17 @@ export default function DataTable(props) {
             <TableCell align="justify"><strong>Market Cap Rank</strong></TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody> 
           {(rowsPerPage > 0
             ? props.rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             : props.rows
           ).map((row) => (
-            <TableRow key={row.name}>
-              <TableCell component="th" scope="row" align={'justify'}>
+            <TableRow 
+                key={row.id} 
+                onClick={e => getCoinInfo(e, row)}
+                selected={row.selected}
+            >
+              <TableCell component="th" scope="row" style={{ width: 160 }} align={'justify'}>
                 {row.name}
               </TableCell>
               <TableCell style={{ width: 160 }}  align={'justify'}>
