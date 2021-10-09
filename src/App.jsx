@@ -30,11 +30,12 @@ const App = () => {
   }, []);
 
   const filterCoinData = (filterTerm) => {
-      setCoins(unFilteredCoin); //Not working
-      let filteredData = coins.filter((item) => {
+      //setCoins(unFilteredCoin); //Not working
+      let dataForFilter = unFilteredCoin;
+      dataForFilter = dataForFilter.filter((item) => {
         return item.name.toLowerCase().includes(filterTerm.toLowerCase()) || item.symbol.toLowerCase().includes(filterTerm.toLowerCase());
       });
-      setCoins(filteredData);
+      setCoins(dataForFilter);
   };
 
   const clearFilter = () => {
