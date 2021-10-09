@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
+import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -50,7 +51,29 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchBar() {
+SearchBar.propTypes = {
+  onFilterChange: PropTypes.func.isRequired,
+  clearFilter: PropTypes.func.isRequired
+}
+
+export default function SearchBar(props) {
+
+  const getFilteredData = (row) => {
+    props.onFilterChange(row);
+  }
+
+  const clearFilter = () => {
+    props.clearFilter();
+  }
+
+  const onChange = e => {
+    if (e.target.value) {
+      getFilteredData(e.target.value);
+    } else {
+      clearFilter();
+    }
+  }
+  
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -68,8 +91,9 @@ export default function SearchBar() {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              placeholder="Search…"
+              placeholder="Filter.."
               inputProps={{ 'aria-label': 'search' }}
+              onChange={onChange}
             />
           </Search>
         </Toolbar>

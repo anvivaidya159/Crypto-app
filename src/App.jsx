@@ -15,6 +15,7 @@ import CoinInfoDailog from "./components/CoinInfoDailog";
 
 const App = () => {
   const [coins, setCoins] = useState([]);
+  const [unFilteredCoin, setUnFilteredCoin] = useState([]);
   const [coinData, setCoinData] = useState(undefined);
   const [showSpinner, setShowSpinner] = useState(true);
   const [openDialog, setOpenDailog] = useState(false);
@@ -23,9 +24,22 @@ const App = () => {
     console.log("showSpinner", showSpinner);
     const data = getCoinList().then((coins) => {
       setCoins(coins);
+      setUnFilteredCoin(coins);
       setShowSpinner(false);
     });
   }, []);
+
+  const filterCoinData = (filterTerm) => {
+      setCoins(unFilteredCoin); //Not working
+      let filteredData = coins.filter((item) => {
+        return item.name.toLowerCase().includes(filterTerm.toLowerCase()) || item.symbol.toLowerCase().includes(filterTerm.toLowerCase());
+      });
+      setCoins(filteredData);
+  };
+
+  const clearFilter = () => {
+      setCoins(unFilteredCoin);
+  };
 
   const getCoinData = (row) => {
     // const afterSelectionCoins = coins.map((x) => x === row ? x.selected = true : x.selected =false)
@@ -44,7 +58,7 @@ const App = () => {
 
   return (
     <div>
-      <SearchBar />
+      <SearchBar onFilterChange={(filterTerm) => filterCoinData(filterTerm)} clearFilter={() => clearFilter()}/>
       {coinData ? (
         <CoinInfoDailog
           showInfo={openDialog}
