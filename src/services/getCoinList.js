@@ -1,4 +1,4 @@
-const coinListUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=aud&order=market_cap_desc&per_page=500&page=1&sparkline=false';
+const coinListUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=aud&order=market_cap_desc&per_page=250&page=1&sparkline=false';
 
  const getCoinList = async () => {
    return await fetch(coinListUrl)
@@ -11,8 +11,7 @@ const coinListUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=
           image: coin.image,
           current_price: coin.current_price,
           market_cap: coin.market_cap,
-          market_cap_rank: coin.market_cap_rank,
-          selected: false
+          market_cap_rank: coin.market_cap_rank
         }));
       });
   };

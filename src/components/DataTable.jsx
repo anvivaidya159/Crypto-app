@@ -106,7 +106,7 @@ export default function DataTable(props) {
   }
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} data-name='crypto-coin-table'>
       <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
       <TableHead>
           <TableRow>

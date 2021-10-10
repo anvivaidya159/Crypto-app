@@ -74,23 +74,20 @@ export default function CoinInfoDailog(props) {
           <img src={props.coinInfo.image.thumb} alt='does not show' align={'right'}></img>
         </BootstrapDialogTitle>
         <DialogContent dividers>
-          {/* <Typography gutterBottom>
-           {props.coinInfo.description.en}
-          </Typography> */}
           <Typography gutterBottom>
-            <div>Symbol : {props.coinInfo.symbol}</div>
-            <div>Market Data : {props.coinInfo.market_data}</div>
-            <div>Market Cap : {props.coinInfo.market_cap}</div>
-            <div>Market Cap Rank : {props.coinInfo.market_cap_rank} </div>
-            <div>Total Volume : {props.coinInfo.total_volume} </div>
+            <p>Symbol : {props.coinInfo.symbol}</p>
+            <p>Market Data : {props.coinInfo.market_data}</p>
+            <p>Market Cap : {props.coinInfo.market_cap}</p>
+            <p>Market Cap Rank : {props.coinInfo.market_cap_rank} </p>
+            <p>Total Volume : {props.coinInfo.total_volume} </p>
           </Typography>
           <Typography gutterBottom>
-          <div> Homepage : 
+          <p> Homepage : 
            <a href={props.coinInfo.links.homepage[0]} >{props.coinInfo.links.homepage[0]} </a>
-           </div>
-           <div> Blockchain Site : 
+           </p>
+           <p> Blockchain Site : 
            <a href={props.coinInfo.links.blockchain_site[0]} >{props.coinInfo.links.blockchain_site[0]} </a>
-           </div>
+           </p>
           </Typography>
 
         </DialogContent>

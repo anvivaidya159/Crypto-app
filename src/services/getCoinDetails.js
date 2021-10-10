@@ -4,7 +4,6 @@ const coinDataUrl = (id) => `https://api.coingecko.com/api/v3/coins/${id}?locali
    return await fetch(coinDataUrl(id))
       .then((response) => response.json())
       .then((data) => {
-          console.log('data', data)
         return {
           id: data.id,
           name: data.name,
